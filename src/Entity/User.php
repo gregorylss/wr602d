@@ -37,13 +37,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $updated_at = null;
+    private ?\DateTimeInterface $updateAt = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $subscription_end_at = null;
+    private ?\DateTimeInterface $subscriptionEndAt = null;
 
     #[ORM\Column(length: 255)]
     private ?string $role = null;
@@ -158,36 +158,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_at;
+        return $this->updateAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): static
+    public function setUpdatedAt(\DateTimeInterface $updateAt): static
     {
-        $this->updated_at = $updated_at;
+        $this->updateAt = $updateAt;
 
         return $this;
     }
 
     public function getSubscriptionEndAt(): ?\DateTimeInterface
     {
-        return $this->subscription_end_at;
+        return $this->subscriptionEndAt;
     }
 
-    public function setSubscriptionEndAt(\DateTimeInterface $subscription_end_at): static
+    public function setSubscriptionEndAt(\DateTimeInterface $subscriptionEndAt): static
     {
-        $this->subscription_end_at = $subscription_end_at;
+        $this->subscriptionEndAt = $subscriptionEndAt;
 
         return $this;
     }
