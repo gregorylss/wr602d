@@ -26,17 +26,17 @@ class SymfonyDocs
     public function generatePdfFromUrl(string $url): string
     {
 
-        $url = 'https://symfony.com/doc/current/index.html';
+        $url = 'https://example.com/';
 
         $response = $this->client->request('POST', 'http://localhost:3000/forms/chromium/convert/url',
-        [
-            'headers' => [
-                'Content-Type' => 'multipart/form-data',
-            ],
-            'body' => [
-                'url' => $url,
-            ],
-        ]
+            [
+                'headers' => [
+                    'Content-Type' => 'multipart/form-data',
+                ],
+                'body' => [
+                    'url' => $url,
+                ],
+            ]
         );
 
         $pdfFilePath = tempnam(sys_get_temp_dir(), 'symfony-docs-') . '.pdf';
