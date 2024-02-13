@@ -18,7 +18,7 @@ class DocController extends AbstractController
         $this->symfonyDocs = $symfonyDocs;
     }
 
-    #[Route('/doc', name: 'app_doc')]
+    #[Route('/pdf', name: 'app_doc')]
     public function index(): Response
     {
         return $this->render('doc/index.html.twig');
@@ -28,7 +28,7 @@ class DocController extends AbstractController
      * @throws \Exception
      * @throws TransportExceptionInterface
      */
-    #[Route('/doc/convert', name: 'app_doc_convert', methods: ['POST'])]
+    #[Route('/pdf/convert', name: 'app_doc_convert', methods: ['POST'])]
     public function convert(Request $request): Response
     {
         $url = $request->request->get('url');
