@@ -13,7 +13,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
+
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -47,8 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $subscriptionEndAt = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
 
     #[ORM\OneToMany(targetEntity: Pdf::class, mappedBy: 'user')]
     private Collection $pdf;
@@ -62,7 +62,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->pdfs = new ArrayCollection();
         $this->pdf = new ArrayCollection();
     }
 
@@ -170,11 +169,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
-        return $this;
+    #[ORM\PrePersist]
+    public function setCreatedAt(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
@@ -183,11 +182,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    public function setUpdatedAt(\DateTimeInterface $updateAt): static
-    {
-        $this->updateAt = $updateAt;
 
-        return $this;
+    #[ORM\PreUpdate]
+    #[ORM\PrePersist]
+    public function setUpdatedAt(): void
+    {
+        $this->updateAt = new \DateTime();
     }
 
     public function getSubscriptionEndAt(): ?\DateTimeInterface
@@ -195,23 +195,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->subscriptionEndAt;
     }
 
-    public function setSubscriptionEndAt(\DateTimeInterface $subscriptionEndAt): static
+    #[ORM\PrePersist]
+    public function setSubscriptionEndAt(): void
     {
-        $this->subscriptionEndAt = $subscriptionEndAt;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): static
-    {
-        $this->role = $role;
-
-        return $this;
+        $this->subscriptionEndAt = new \DateTime();
     }
 
     /**
