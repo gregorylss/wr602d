@@ -16,6 +16,9 @@
         <h3>Vous êtes connecté en tant que {{ app.user.firstName }} !</h3>
     {% else %}
         <h2>Bienvenue visiteur !</h2>
+        <p>Vous n'êtes pas connecté.</p>
+        <p>Pour vous connecter : <a href="{{ path('app_login') }}">Cliquez ici</a></p>
+        <p>Pour vous inscrire : <a href="{{ path('app_register') }}">Cliquez ici</a></p>
     {% endif %}
 
     This friendly message is coming from:

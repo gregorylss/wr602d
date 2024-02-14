@@ -23,7 +23,16 @@ class DocController extends AbstractController
     #[Route('/pdf', name: 'app_doc')]
     public function index(): Response
     {
-        return $this->render('doc/index.html.twig');
+
+        // recupere l'utilisateur connecté
+        $user = $this->getUser();
+        // recupere les pdf de l'utilisateur connecté
+        $pdfs = $user->getPdf();
+
+        return $this->render('doc/index.html.twig', [
+            'pdfs' => $pdfs
+        ]);
+
     }
 
     /**
@@ -38,20 +47,19 @@ class DocController extends AbstractController
         $url = $request->request->get('url');
         $pdfFilePath = $this->symfonyDocs->generatePdfFromUrl($url);
 
-        // Créer une nouvelle instance de Pdf et lui attribuer les valeurs nécessaires
         $pdf = new Pdf();
-        $pdf->setTitle('PDF title');
+        $pdfName = $request->request->get('title');
+        $pdf->setTitle($pdfName);
         $pdf->setCreatedAt(new \DateTimeImmutable());
-        $pdf->setUser($this->getUser()); // Associez le PDF à l'utilisateur actuellement connecté
+        $pdf->setUser($this->getUser()); //
 
-        // Enregistrez le PDF dans la base de données
 
-       $doctrine->getManager();
+        $doctrine->getManager();
         $entityManager = $doctrine->getManager();
         $entityManager->persist($pdf);
         $entityManager->flush();
 
-        // Retournez le PDF généré
+
         return $this->file($pdfFilePath);
     }
 }
