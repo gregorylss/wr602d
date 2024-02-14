@@ -7,6 +7,17 @@
     <form action="{{ path('app_doc_convert') }}" method="post">
         <label for="url">Entrez l'URL :</label><br>
         <input type="text" id="url" name="url" required><br><br>
+        <label for="title">Entrez le titre du PDF :</label><br>
+        <input type="text" id="title" name="title" required><br><br>
         <button type="submit">Convertir en PDF</button>
+
+        <h1>Liste des PDF</h1>
+        <ul>
+            {% for pdf in pdfs %}
+                <li>
+                  {{ pdf.title }}
+                </li>
+            {% endfor %}
+        </ul>
     </form>
 {% endblock %}
