@@ -11,10 +11,17 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
+    <p>You are actually susbcribe with this : </p>
+    <p>{{ subscriptionUser.title }}</p>
+
+    <p>Here is the list of all the subscriptions:</p>
     <ul>
-        <li>Your controller at <code>C:/Users/rapic/Documents/IUT cours/S6/wr602d/src/Controller/SubscriptionController.php</code></li>
-        <li>Your template at <code>C:/Users/rapic/Documents/IUT cours/S6/wr602d/templates/subscription/index.html.twig</code></li>
+        {% for subscription in subscriptions %}
+            <li>{{ subscription.title }}</li>
+                {{ subscription.price }} € <br>
+                {{ subscription.description }}.<br>
+                {{ subscription.pdfLimit}} pdf max.
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
