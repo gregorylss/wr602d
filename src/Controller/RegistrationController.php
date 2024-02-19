@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Subscription;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\LoginAuthenticator;
@@ -43,9 +44,8 @@ class RegistrationController extends AbstractController
             );
 
             $user->setRoles(['ROLE_USER']);
-
-
-
+            $user->setIsVerified(false);
+            $user->setSubscription($entityManager->getRepository(Subscription::class)->findOneBy(['title' => 'Free']));
             $entityManager->persist($user);
             $entityManager->flush();
 
