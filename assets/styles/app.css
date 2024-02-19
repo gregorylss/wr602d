@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Stylisation du titre */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Stylisation des paragraphes */
+p {
+    margin-bottom: 10px;
+}
+
+/* Stylisation de la liste des abonnements */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+
+}
+
+ul li {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    background-color: #f9f9f9;
+    border: black 1px solid;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+
+/* Stylisation du formulaire */
+#subscriptionForm {
+    margin-top: 20px;
+}
+
+#subscriptionForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#subscriptionForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Stylisation du bouton */
+#subscriptionForm button {
+    background-color: #007bff; /* couleur de fond */
+    border: none; /* pas de bordure */
+    color: white; /* couleur du texte */
+    padding: 10px 20px; /* espace intérieur */
+    font-size: 16px; /* taille de police */
+    cursor: pointer; /* curseur de souris */
+    border-radius: 5px; /* bordure arrondie */
+    width: 100%; /* largeur à 100% */
+}
+
+#subscriptionForm button:hover {
+    background-color: #0056b3; /* couleur de fond au survol */
+}

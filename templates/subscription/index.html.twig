@@ -3,12 +3,8 @@
 {% block title %}Hello SubscriptionController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
+<div class="container">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
     <p>You are actually susbcribe with this : </p>
@@ -17,20 +13,32 @@
     <p>Here is the list of all the subscriptions:</p>
     <ul>
         {% for subscription in subscriptions %}
-            <li>{{ subscription.title }}</li>
+            {% set subscription_class = '' %}
+            {% if loop.index == 1 %}
+                {% set subscription_class = 'free' %}
+            {% elseif loop.index == 2 %}
+                {% set subscription_class = 'basic' %}
+            {% elseif loop.index == 3 %}
+                {% set subscription_class = 'premium' %}
+            {% endif %}
+            <li class="{{ subscription_class }}">
+                {{ subscription.title }}<br>
                 {{ subscription.price }} € <br>
                 {{ subscription.description }}.<br>
                 {{ subscription.pdfLimit}} pdf max.
+            </li>
         {% endfor %}
     </ul>
+
+
 
     <div id="subscriptionForm" >
         {{ form_start(form) }}
         {{ form_row(form.subscription) }}
-        <button type="submit">Create</button>
+        <button type="submit">Change your subscription</button>
         {{ form_end(form) }}
     </div>
 
-
 </div>
+
 {% endblock %}

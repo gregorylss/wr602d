@@ -27,10 +27,10 @@ class DocController extends AbstractController
 
         $user = $this->getUser();
 
-        $pdfs = $user->getPdf();
+
 
         return $this->render('doc/index.html.twig', [
-            'pdfs' => $pdfs
+
         ]);
 
     }
