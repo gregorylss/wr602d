@@ -24,9 +24,9 @@ class DocController extends AbstractController
     public function index(): Response
     {
 
-        // recupere l'utilisateur connecté
+
         $user = $this->getUser();
-        // recupere les pdf de l'utilisateur connecté
+
         $pdfs = $user->getPdf();
 
         return $this->render('doc/index.html.twig', [
@@ -44,14 +44,14 @@ class DocController extends AbstractController
     {
 
 
-        $url = $request->request->get('url');
-        $pdfFilePath = $this->symfonyDocs->generatePdfFromUrl($url);
+
 
         $pdf = new Pdf();
         $pdfName = $request->request->get('title');
         $pdf->setTitle($pdfName);
         $pdf->setCreatedAt(new \DateTimeImmutable());
-        $pdf->setUser($this->getUser()); //
+        $pdf->setFilepath('/pdfs/' . $pdfName . '.pdf');
+        $pdf->setUser($this->getUser());
 
 
         $doctrine->getManager();
@@ -59,6 +59,8 @@ class DocController extends AbstractController
         $entityManager->persist($pdf);
         $entityManager->flush();
 
+        $url = $request->request->get('url');
+        $pdfFilePath = $this->symfonyDocs->generatePdfFromUrl($url, $pdfName);
 
         return $this->file($pdfFilePath);
     }

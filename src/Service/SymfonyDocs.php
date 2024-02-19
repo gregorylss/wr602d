@@ -23,10 +23,8 @@ class SymfonyDocs
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function generatePdfFromUrl(string $url): string
+    public function generatePdfFromUrl(string $url, string $pdfName): string
     {
-
-        $url = 'https://example.com/';
 
         $response = $this->client->request('POST', 'http://localhost:3000/forms/chromium/convert/url',
             [
@@ -39,7 +37,9 @@ class SymfonyDocs
             ]
         );
 
-        $pdfFilePath = tempnam(sys_get_temp_dir(), 'symfony-docs-') . '.pdf';
+
+
+        $pdfFilePath = 'pdfs/' . $pdfName . '.pdf';
         file_put_contents($pdfFilePath, $response->getContent());
 
         return $pdfFilePath;
