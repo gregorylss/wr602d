@@ -18,10 +18,15 @@ class ProfileController extends AbstractController
         $endOfDay = date('Y-m-d 23:59:59');
         $numberOfPDFs = $pdfRepository->countPdfGeneratedByUserOnDate($userId, $startOfDay, $endOfDay);
 
+        $user = $this->getUser();
+        $pdfs = $user->getPdf();
+
+
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
-            'number_of_pdfs' => $numberOfPDFs, // Passez le nombre de PDFs à votre vue pour l'afficher
-            'end_of_day' => $endOfDay, // Passez la date de fin de journée à votre vue pour l'afficher
+            'number_of_pdfs' => $numberOfPDFs, //
+            'end_of_day' => $endOfDay,
+            'pdfs' => $pdfs
         ]);
     }
 }
