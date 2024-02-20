@@ -13,6 +13,18 @@
         <p>Utilisateur depuis le : {{ app.user.createdAt|date('d/m/Y') }}</p>
         <p>Abonnement : {{ app.user.subscription.title }}</p>
         <p>Nombre de PDFs générés aujourd'hui : {{ number_of_pdfs }}</p>
+
+        <h1>Vos PDFs :</h1>
+
+        {% for pdf in app.user.pdf %}
+            <div class="pdf-card">
+                <h3>{{ pdf.title }}</h3>
+                <p>Date de création: {{ pdf.createdAt|date('d/m/Y') }}</p>
+                <a href="{{ pdf.filepath }}" class="pdf-link">Voir le PDF</a>
+            </div>
+        {% endfor %}
+
+
     </div>
 
 {% endblock %}

@@ -1,44 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+body{
+    font-family: Montserrat, sans-serif;
+    background-color: #DCDCDC;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: Montserrat, sans-serif;
+    font-weight: 500 !important;
+}
+
+
 
 .container {
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Stylisation du titre */
+.container_login {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+}
+
+
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Stylisation des paragraphes */
+
 p {
     margin-bottom: 10px;
 }
 
-/* Stylisation de la liste des abonnements */
-ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
 
-}
-
-ul li {
-    margin-right: 20px;
-    margin-bottom: 20px;
-    width: 500px;
-    background-color: #f9f9f9;
-    border: black 1px solid;
-    padding: 20px;
-    border-radius: 20px;
-}
-
-
-
-/* Stylisation du formulaire */
 #subscriptionForm {
     margin-top: 20px;
 }
@@ -58,7 +64,7 @@ ul li {
 
 /* Stylisation du bouton */
 #subscriptionForm button {
-    background-color: #007bff; /* couleur de fond */
+
     border: none; /* pas de bordure */
     color: white; /* couleur du texte */
     padding: 10px 20px; /* espace intérieur */
@@ -66,22 +72,18 @@ ul li {
     cursor: pointer; /* curseur de souris */
     border-radius: 5px; /* bordure arrondie */
     width: 100%; /* largeur à 100% */
+    border: 1px solid #0056b3; /* bordure */
 }
 
 #subscriptionForm button:hover {
     background-color: #0056b3; /* couleur de fond au survol */
 }
 
-
-/* Style général du formulaire */
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+input[type="submit"] {
+    background-color: #007bff;
 }
+
+
 
 /* Style des champs */
 label {
@@ -99,17 +101,7 @@ input{
     box-sizing: border-box;
 }
 
-/* Style du bouton */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: blue;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+
 
 
 /* Style des messages d'erreur */
@@ -131,3 +123,73 @@ button {
 .mb-3 a:hover {
     text-decoration: underline;
 }
+
+
+.login_form {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.btnform {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register_form {
+    width: 500px;
+}
+
+.pdf_form {
+    width: 700px;
+}
+
+.pdf-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pdf-card h3 {
+    margin-top: 0;
+}
+
+.pdf-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.pdf-link:hover {
+    background-color: #0056b3;
+}
+
+.subscription-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.subscription-card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.subscription-card p {
+    margin: 5px 0;
+}
+

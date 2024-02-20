@@ -3,15 +3,22 @@
 {% block title %}Convertir une URL en PDF{% endblock %}
 
 {% block body %}
-    <div class="container">
-    <h1>Convertir une URL en PDF</h1>
-    <form action="{{ path('app_doc_convert') }}" method="post">
-        <label for="url">Entrez l'URL :</label><br>
-        <input type="text" id="url" name="url" required><br><br>
-        <label for="title">Entrez le titre du PDF :</label><br>
-        <input type="text" id="title" name="title" required><br><br>
-        <button type="submit">Convertir en PDF</button>
-    </form>
-
+    <div class="container_login">
+        <h1>Convertir une URL en PDF</h1>
+        {% if quota_exceeded %}
+            <p>Quota quotidien atteint. Vous ne pouvez plus générer de PDF aujourd'hui.</p>
+        {% else %}
+            <form action="{{ path('app_doc_convert') }}" method="post" class="login_form">
+                <div>
+                    <label for="url">Entrez l'URL :</label>
+                    <input type="text" id="url" name="url" required>
+                </div>
+                <div>
+                    <label for="title">Entrez le titre du PDF :</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <button class="btnform" type="submit">Convertir en PDF ({{ pdfs_remaining }} remaining)</button>
+            </form>
+        {% endif %}
     </div>
 {% endblock %}

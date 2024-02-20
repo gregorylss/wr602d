@@ -4,21 +4,5 @@
 
 {% block body %}
 
-<div class="container">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    {% if app.user %}
-        <h2>Bienvenue {{ app.user.email }} !</h2>
-        <h3>Vous êtes connecté en tant que {{ app.user.firstName }} !</h3>
-    {% else %}
-        <h2>Bienvenue visiteur !</h2>
-        <p>Vous n'êtes pas connecté.</p>
-    {% endif %}
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/rapic/Documents/IUT cours/S6/wr602d/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/rapic/Documents/IUT cours/S6/wr602d/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}

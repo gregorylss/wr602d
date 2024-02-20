@@ -5,37 +5,36 @@
 {% block body %}
 
 <div class="container">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
     <p>You are actually susbcribe with this : </p>
     <p>{{ subscriptionUser.title }}</p>
 
     <p>Here is the list of all the subscriptions:</p>
-    <ul>
-        {% for subscription in subscriptions %}
-            {% set subscription_class = '' %}
-            {% if loop.index == 1 %}
-                {% set subscription_class = 'free' %}
-            {% elseif loop.index == 2 %}
-                {% set subscription_class = 'basic' %}
-            {% elseif loop.index == 3 %}
-                {% set subscription_class = 'premium' %}
-            {% endif %}
-            <li class="{{ subscription_class }}">
-                {{ subscription.title }}<br>
-                {{ subscription.price }} € <br>
-                {{ subscription.description }}.<br>
-                {{ subscription.pdfLimit}} pdf max.
-            </li>
-        {% endfor %}
-    </ul>
+    {% for subscription in subscriptions %}
+        {% set subscription_class = '' %}
+        {% if loop.index == 1 %}
+            {% set subscription_class = 'free' %}
+        {% elseif loop.index == 2 %}
+            {% set subscription_class = 'basic' %}
+        {% elseif loop.index == 3 %}
+            {% set subscription_class = 'premium' %}
+        {% endif %}
+        <div class="subscription-card {{ subscription_class }}">
+            <h2>{{ subscription.title }}</h2>
+            <p>{{ subscription.price }} €</p>
+            <p>{{ subscription.description }}</p>
+            <p>{{ subscription.pdfLimit }} pdf max.</p>
+        </div>
+    {% endfor %}
+
+
 
 
 
     <div id="subscriptionForm" >
         {{ form_start(form) }}
         {{ form_row(form.subscription) }}
-        <button type="submit">Change your subscription</button>
+        <button class="btnform" type="submit">Change your subscription</button>
         {{ form_end(form) }}
     </div>
 
