@@ -71,3 +71,63 @@ ul li {
 #subscriptionForm button:hover {
     background-color: #0056b3; /* couleur de fond au survol */
 }
+
+
+/* Style général du formulaire */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Style des champs */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Style du bouton */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Style des messages d'erreur */
+.alert {
+    margin-bottom: 15px;
+    padding: 15px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 3px;
+}
+
+/* Style du lien pour se déconnecter */
+.mb-3 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.mb-3 a:hover {
+    text-decoration: underline;
+}
