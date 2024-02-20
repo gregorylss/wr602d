@@ -3,6 +3,7 @@
 {% block title %}Convertir une URL en PDF{% endblock %}
 
 {% block body %}
+    <div class="container">
     <h1>Convertir une URL en PDF</h1>
     <form action="{{ path('app_doc_convert') }}" method="post">
         <label for="url">Entrez l'URL :</label><br>
@@ -10,7 +11,7 @@
         <label for="title">Entrez le titre du PDF :</label><br>
         <input type="text" id="title" name="title" required><br><br>
         <button type="submit">Convertir en PDF</button>
-
-
     </form>
+
+    </div>
 {% endblock %}
