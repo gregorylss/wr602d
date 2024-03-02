@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ importmap() }}
+    {% endblock %}
+</head>
+
+<body>
+
+<nav>
+    <div class="">
+        <div class="flex justify-between h-16 px-10 shadow items-center">
+            {% if app.user %}
+                <div class="flex items-center space-x-8">
+                    <div class="hidden md:flex justify-around space-x-4">
+                        <a href="/" class="hover:text-indigo-600 text-gray-700">Home</a>
+                        <a href="/pdf" class="hover:text-indigo-600 text-gray-700">PDF Maker</a>
+                        <a href="/subscription" class="hover:text-indigo-600 text-gray-700">Subscriptions</a>
+                        <a href="/profile" class="hover:text-indigo-600 text-gray-700">Profile</a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="flex space-x-4 items-center">
+                {% if app.user %}
+                    <a href="/logout" class="text-gray-800 text-sm">Logout</a>
+                {% else %}
+                    <a href="/login" class="text-gray-800 text-sm">Login</a>
+                    <a href="/register" class="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-500 text-sm">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
